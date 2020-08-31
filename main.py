@@ -48,3 +48,9 @@ def voters(): # cheks is you are over 18
         print("You are able to vote HURRAY!!")
     
 voters()
+def people():
+    b = ['malli','nesh','newton']
+    c = input ("enter who you want to vote for: ")
+    if c = 'malli'
+    
+    
