@@ -4,6 +4,10 @@ import sqlite3
 this page the page for my daterbase
 '''
 conn = sqlite3.connect('main.db')
-cone = sqlite3.connect('votes.db')
-d = cone.cursor()
+conn = sqlite3.connect('votes.db')
 c = conn.cursor()
+def table():
+    
+    conn.execute('CREATE TABLE IF NOT EXISTS malli(pepople)')
+    
+table()

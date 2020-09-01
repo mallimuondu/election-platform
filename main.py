@@ -31,7 +31,6 @@ if a == 'not new':
                 again = input("Do u want to try again?(y/n): ")
                 if again.lower() == "n":
                     print("Good Bye")
-                    time.sleep(1)
                     break
     login()
 elif a == 'new': # this is sign up for new people
@@ -48,9 +47,19 @@ def voters(): # cheks is you are over 18
         print("You are able to vote HURRAY!!")
     
 voters()
-def people():
-    b = ['malli','nesh','newton']
-    c = input ("enter who you want to vote for: ")
-    if c = 'malli'
+def malli():
+    c = ['malli','nesh','newton']
+    print(c)
+    a = input("chose a candidets: ")
+    c.execute("INSERT INTO malli (number)VALUES(?)",(a,))
+malli()
+
+def read_from_db():
+    c.execute("SELECT * FROM malli")
     
+    a = c.fetchall()
+    
+    print(a)
+    
+read_from_db()
     
