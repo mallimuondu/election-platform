@@ -4,10 +4,23 @@ import sqlite3
 this page the page for my daterbase
 '''
 conn = sqlite3.connect('main.db')
-conn = sqlite3.connect('votes.db')
 c = conn.cursor()
+donn = sqlite3.connect('votes.db')
+d = donn.cursor()
+fonn = sqlite3.connect('candidates.db')
+f = fonn.cursor()
+
 def table():
     
-    conn.execute('CREATE TABLE IF NOT EXISTS malli(pepople)')
+    c.execute('CREATE TABLE IF NOT EXISTS malli(people STR)')
     
 table()
+
+
+def candidates():
+    
+    f.execute('CREATE TABLE IF NOT EXISTS candidates(firstname STR)')
+    
+candidates()
+
+

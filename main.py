@@ -11,55 +11,103 @@ def clock():  # This part will great you dipending on time
     else:
         print('Good night.')
 clock()
-a = input("are you new or not new: ")
-if a == 'not new':
-    def login(): # this is login for not new people
-        for i in range(3):
-            username = input("pls enter your username: ")
-            password = input("pls enter pass: ")
-            with sqlite3.connect('main.db') as db:
-                cursour = db.cursor()
-            find_user = ('SELECT * FROM login WHERE username = ? AND password = ?')
-            cursour.execute(find_user,[(username), (password)])
-            results = cursour.fetchall()
-            if results:
-                for bla in results:
-                    malli = str(bla)
-                break
-            else:
-                print("Username and passwored not recognised")
-                again = input("Do u want to try again?(y/n): ")
-                if again.lower() == "n":
-                    print("Good Bye")
+askwho = input("are you a a/avoter b/candidate or c/staffmember:   ")
+if askwho == 'a':
+    a = input("are you new or not new: ")
+    if a == 'not new':
+        def login(): # this is login for not new people
+            for i in range(3):
+                username = input("pls enter your username: ")
+                password = input("pls enter pass: ")
+                with sqlite3.connect('main.db') as db:
+                    cursour = db.cursor()
+                find_user = ('SELECT * FROM login WHERE username = ? AND password = ?')
+                cursour.execute(find_user,[(username), (password)])
+                results = cursour.fetchall()
+                if results:
+                    for bla in results:
+                        malli = str(bla)
                     break
-    login()
-elif a == 'new': # this is sign up for new people
-    def adding_new_person():
-        name1 = input("Enter your first name:  ")
-        name2 = input("Enter your second name:  ")
-        print(name1 + " welcome")
-    adding_new_person()
-def voters(): # cheks is you are over 18
-    age  = int(input("pls enter youre age: "))
-    if age < 18:
-        print("You are not an Eligible voter!!")
-    elif age > 18:
-        print("You are able to vote HURRAY!!")
-    
-voters()
-def malli():
-    c = ['malli','nesh','newton']
-    print(c)
-    a = input("chose a candidets: ")
-    c.execute("INSERT INTO malli (number)VALUES(?)",(a,))
-malli()
+                else:
+                    print("Username and passwored not recognised")
+                    again = input("Do u want to try again?(y/n): ")
+                    if again.lower() == "n":
+                        print("Good Bye")
+                        break
+        login()
+    elif a == 'new': # this is sign up for new people
+        def adding_new_person():
+            name1 = input("Enter your first name:  ")
+            name2 = input("Enter your second name:  ")
+            print(name1 + " welcome")
+        adding_new_person()
+    def voters(): # cheks is you are over 18
+        age  = int(input("pls enter youre age: "))
+        if age < 18:
+            print("You are not an Eligible voter!!")
+            return
+        elif age > 18:
+            print("You are able to vote HURRAY!!")
 
-def read_from_db():
-    c.execute("SELECT * FROM malli")
+    voters()
+    def malli():
+        f.execute("SELECT * FROM candidates")
+        a = input("chose a candidets: ")
+        c.execute("INSERT INTO malli (people)VALUES(?)",(a,))
+    malli()
+
+    def read_from_db():
+        f.execute("SELECT * FROM malli")
+        a = f.fetchall()
+        print(a)
+
+    read_from_db()
+elif askwho == 'b':
+    print('''
+    welcome Candidate DO YOU WANT TO BE A:
     
-    a = c.fetchall()
+    a.Governor
+    b.President
+    ''')
+    e = input("chose what canditate you want to be: ")
+    if e == 'a':
+        def adding_new_person():
+            while True:
+                name  = input("enter your name: ")
+                if not name.isalpha():
+                    continue
+                else:
+                    f.execute("INSERT INTO candidates (firstname)VALUES(?)",(name,))
+                      
+                    conn.commit()
+                    print("DATER ENTER SUCSEFULLY")
+            
+                break
+        adding_new_person()
+        def age(): # cheks is you are over 18
+            age  = int(input("pls enter youre age: "))
+            if age < 18:
+                print("You are not an Eligible voter!!")
+                return
+            elif age > 18:
+                print("Welcome")
+        age()
+    else:
+        print("WAIT DUD")
+
     
-    print(a)
     
-read_from_db()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
