@@ -57,7 +57,7 @@ if askwho == 'a':
     malli()
 
     def read_from_db():
-        f.execute("SELECT * FROM malli")
+        f.execute("SELECT * FROM candidates")
         a = f.fetchall()
         print(a)
 
