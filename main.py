@@ -1,35 +1,38 @@
 from daterbase import *
+from login import *
 def clock():  # This part will great you dipending on time
     now = time.datetime.now()
     hour = now.hour
     if hour < 12:
         print("Good morning")
-    elif hour > 12 and hour < 18:
+    elif hour > 11 and hour < 18:
         print("Good afternoon")
     elif hour > 18 and hour < 19:
         print("Good evening")
     else:
         print('Good night.')
 clock()
-askwho = input("are you a a/avoter b/candidate or c/staffmember:   ")
+askwho = input('''are you a:
+a/avoter
+b/candidate
+c/staffmember:''')
 if askwho == 'a':
     a = input("are you new or not new: ")
     if a == 'not new':
         def login(): # this is login for not new people
             for i in range(3):
-                username = input("pls enter your username: ")
-                password = input("pls enter pass: ")
+                idnumber = input("pls enter your id number: ")
                 with sqlite3.connect('main.db') as db:
                     cursour = db.cursor()
-                find_user = ('SELECT * FROM login WHERE username = ? AND password = ?')
-                cursour.execute(find_user,[(username), (password)])
+                find_user = ('SELECT * FROM login WHERE idnumber = ?')
+                cursour.execute(find_user,[(idnumber)])
                 results = cursour.fetchall()
                 if results:
                     for bla in results:
                         malli = str(bla)
                     break
                 else:
-                    print("Username and passwored not recognised")
+                    print("id not recognised")
                     again = input("Do u want to try again?(y/n): ")
                     if again.lower() == "n":
                         print("Good Bye")
@@ -50,51 +53,58 @@ if askwho == 'a':
             print("You are able to vote HURRAY!!")
 
     voters()
-    def malli():
+    def candidets():   
         f.execute("SELECT * FROM candidates")
+        print(f.fetchall())
+        
         a = input("chose a candidets: ")
-        c.execute("INSERT INTO malli (people)VALUES(?)",(a,))
-    malli()
+        c.execute("INSERT INTO voters VALUES(?)",(a))
+        conn.commit()
+        
+        c.execute("SELECT * FROM  voters")
+        print(c.fetchall())
+   
+    candidets()
 
-    def read_from_db():
-        f.execute("SELECT * FROM candidates")
-        a = f.fetchall()
-        print(a)
-
-    read_from_db()
 elif askwho == 'b':
-    print('''
-    welcome Candidate DO YOU WANT TO BE A:
-    
-    a.Governor
-    b.President
-    ''')
-    e = input("chose what canditate you want to be: ")
-    if e == 'a':
-        def adding_new_person():
-            while True:
-                name  = input("enter your name: ")
-                if not name.isalpha():
-                    continue
-                else:
-                    f.execute("INSERT INTO candidates (firstname)VALUES(?)",(name,))
-                      
-                    conn.commit()
-                    print("DATER ENTER SUCSEFULLY")
+    def adding_items():
+        while True:
+            name  = input("enter your name: ")
+            if not name.isalpha():
+                continue
+            else:
+                try:
+                    age = int(input("enter age: "))
+                except ValueError:
+                    print("sorry i did'nt understand that")
             
-                break
-        adding_new_person()
+                    
+            f.execute("INSERT INTO candidates(name,age) VALUES(?,?)",(name,age))
+            fonn.commit()
+            print("it works")
+            break
+                        
+        adding_items()
+
         def age(): # cheks is you are over 18
+            print("enter age agin")
             age  = int(input("pls enter youre age: "))
             if age < 18:
                 print("You are not an Eligible voter!!")
-                return
+                exit()
             elif age > 18:
                 print("Welcome")
         age()
-    else:
-        print("WAIT DUD")
-
+    adding_items()
+else:
+    print("sorry don't anderstand you")
+    
+    
+    
+    
+    
+    
+    
     
     
     

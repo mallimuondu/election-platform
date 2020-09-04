@@ -12,15 +12,10 @@ f = fonn.cursor()
 
 def table():
     
-    c.execute('CREATE TABLE IF NOT EXISTS malli(people STR)')
+    c.execute('CREATE TABLE IF NOT EXISTS voters(people TEXT )')
     
 table()
 
-
-def candidates():
-    
-    f.execute('CREATE TABLE IF NOT EXISTS candidates(firstname STR)')
-    
-candidates()
-
-
+def create_table():
+        f.execute('CREATE TABLE IF NOT EXISTS candidates(name TEXT,age INT)')
+create_table()

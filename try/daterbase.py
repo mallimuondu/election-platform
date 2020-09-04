@@ -1,30 +1,20 @@
 import sqlite3
-conn = sqlite3.connect('try.db')
+conn = sqlite3.connect('mall.db')
 c = conn.cursor()
+#c.execute("""CREATE  TABLE moutain( 
+#    first text,
+#    age interger
+#  
+#  )""") 
+c.execute ("INSERT INTO moutain VALUES('Malli',9)")
+c.execute("SELECT * FROM moutain WHERE first = 'Malli'")
+print(c.fetchone())
+conn.commit()
 
-def table():
-    c.execute('CREATE TABLE IF NOT EXISTS age(age INT)')
-table()    
-def addinput():
-    while True:
-        age  = int(input("enter your name: "))
-        if not age.isalpha():
-            continue
-        else:
-            c.execute("INSERT INTO malli (name)VALUES(?)",(name,))
-                      
-            conn.commit()
-            print("entereds")
-            
-            break
-addinput()
+conn.close()
 
-
-
-def read_from_db():
-    c.execute("SELECT * FROM malli ")
-    
-    a = c.fetchall()
-    
-    print(a)
-read_from_db()
+def uppdate_pay(emp,pay):
+    with conn:
+        c.execute("""UPDATE from moutain WHERE first = :first AND age = :age""",
+                 {'first':emp.first,'age':emp.last})
+    pass
