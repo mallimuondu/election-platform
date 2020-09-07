@@ -16,6 +16,8 @@ def table():
     
 table()
 
-def create_table():
-        f.execute('CREATE TABLE IF NOT EXISTS candidates(name TEXT,age INT)')
-create_table()
+def table():
+    
+    f.execute('CREATE TABLE IF NOT EXISTS people(name TEXT)')
+    
+table()
