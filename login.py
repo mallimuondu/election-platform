@@ -1,6 +1,10 @@
 import sqlite3
-conn = sqlite3.connect('main.db') 
+conn = sqlite3.connect('id.db') 
 cursour = conn.cursor()
+
+fonn = sqlite3.connect('id.db') 
+f = conn.cursor()
+
 
 def user_creation():
     '''
@@ -14,9 +18,9 @@ def user_creation():
     conn.commit()
 user_creation()
     
-cursour.execute("CREATE TABLE IF NOT EXISTS login1(username VARCHAR, password VARCHAR)")
+f.execute("CREATE TABLE IF NOT EXISTS Stafflogin(username VARCHAR, password VARCHAR)")
 
-cursour.execute("INSERT INTO login1 VALUES('malli', 'Malli2010')")
+f.execute("INSERT INTO Stafflogin VALUES('malli', 'Malli2010')")
                 
-cursour.execute("INSERT INTO login1 VALUES('nesh', '12')")
+f.execute("INSERT INTO Stafflogin VALUES('nesh', '12')")
 conn.commit()

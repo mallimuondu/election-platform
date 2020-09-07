@@ -99,19 +99,19 @@ elif askwho == 'c':
         username = input("pls enter your username: ")
         password = input("pls enter pass: ")
         with sqlite3.connect('main.db') as db:
-            cursour = db.cursor()
-        find_user = ('SELECT * FROM login WHERE username = ? AND password = ?')
-        cursour.execute(find_user,[(username), (password)])
-        results = cursour.fetchall()
-        if results:
-            for bla in results:
-                malli = str(bla)
+            f = db.cursor()
+        find_user = ('SELECT * FROM Stafflogin WHERE username = ? AND password = ?')
+        f.execute(find_user,[(username), (password)])
+        results1 = cursour.fetchall()
+        if results1:
+            for results1 in results1:
+                name = str(bla)
                 print("Welcome ")
             break
         else:
             print("Username and passwored not recognised")
-            again = input("Do u want to try again?(y/n): ")
-            if again.lower() == "n":
+            again1 = input("Do u want to try again?(y/n): ")
+            if again1.lower() == "n":
                 print("Good Bye")
                 time.sleep(1)
                 break
