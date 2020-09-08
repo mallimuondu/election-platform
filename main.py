@@ -12,7 +12,7 @@ def clock():  # This part will great you dipending on time
         print('Good night.')
 clock()
 askwho = input('''are you a:
-a/avoter
+a/voter
 b/candidate
 c/staffmember
 :''')
@@ -47,11 +47,12 @@ if askwho == 'a':
             age  = int(input("pls enter youre age: "))
             if age < 18:
                 print("You are not an Eligible voter!!")
-                return
+                exit()
             elif age > 18:
                 print("You are able to vote HURRAY!!")
             idnumber = input("pls enter your id number: ")
             print(name1 + " welcome")
+        adding_new_person()
     def candidets():   
         f.execute("SELECT * FROM people ")
     
@@ -60,20 +61,18 @@ if askwho == 'a':
         print(a)
         a = input('''choose a candidets:
         :''' )
-        c.execute("INSERT INTO voters VALUES(?)",(a))
+        c.execute("INSERT INTO voters VALUES(?)",(a,))
         conn.commit()
-        
-        c.execute("SELECT * FROM  voters")
-        print(c.fetchall())
-   
+        print("Thanks for voting for "+a)
+        listing = list(a)
+        count = listing.count('malli',)
+        print(count)
     candidets()
-
 elif askwho == 'b':
     def addinput():
         while True:
-            name  = input("enter your name: ")
-            secondname  = input("enter your secondname: ")
-            age  = int(input("enter your age: "))
+            name  = input("enter your first name: ")
+            secondname  = input("enter your second name: ")
             idn  = int(input("enter your id: "))
             if not name.isalpha():
                 continue
@@ -92,30 +91,35 @@ elif askwho == 'b':
             print("You are not an Eligible voter!!")
             exit()
         elif age > 18:
-            print("Welcome")
+            print("thanks for signig up as a candidate")
     age()
 elif askwho == 'c':
-    for i in range(3):
-        username = input("pls enter your username: ")
-        password = input("pls enter pass: ")
-        with sqlite3.connect('main.db') as db:
-            f = db.cursor()
-        find_user = ('SELECT * FROM Stafflogin WHERE username = ? AND password = ?')
-        f.execute(find_user,[(username), (password)])
-        results1 = cursour.fetchall()
-        if results1:
-            for results1 in results1:
-                name = str(bla)
-                print("Welcome ")
-            break
-        else:
-            print("Username and passwored not recognised")
-            again1 = input("Do u want to try again?(y/n): ")
-            if again1.lower() == "n":
-                print("Good Bye")
-                time.sleep(1)
-                break
-
+    a = {
+        "malli" : "Malli2010",
+        "nesh" : "1234",
+        "sharon": "sharon2008"
+                }
+    complete = False
+    user = {"malli" : "Malli2010", "nesh" : "1234" }
+ 
+    while not complete:
+        username = input("Username: ")
+        password = input("Password: ")
+        if username == user and password == password:
+            continue
+        elif username not in user:
+            print("This is not a valid username, input username again!")
+            continue
+        elif password != user[username]:
+        
+            print("Password is not valid for username.")
+            continue
+        elif password == user[username]:
+            print("Welcome username ")
+            print("Thank you for logging on. ")
+            complete = True
+            print ("Username and Password Validated in Python")     
+ 
     
     
     

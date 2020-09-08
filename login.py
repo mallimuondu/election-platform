@@ -17,10 +17,3 @@ def user_creation():
     cursour.execute("INSERT INTO login VALUES('64025')")
     conn.commit()
 user_creation()
-    
-f.execute("CREATE TABLE IF NOT EXISTS Stafflogin(username VARCHAR, password VARCHAR)")
-
-f.execute("INSERT INTO Stafflogin VALUES('malli', 'Malli2010')")
-                
-f.execute("INSERT INTO Stafflogin VALUES('nesh', '12')")
-conn.commit()
