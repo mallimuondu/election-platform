@@ -16,11 +16,14 @@ a/voter
 b/candidate
 c/staffmember
 :''')
-if askwho == 'a':
+
+
+if askwho == 'a' or askwho == 'voter':
     a = input('''are you:
     a.new voter
-    b.old :''' )
-    if a == 'b':
+    b.old 
+    :''' )
+    if a == 'b' or a == 'old':
         def login(): # this is login for not new people
             for i in range(3):
                 idnumber = input("pls enter your id number: ")
@@ -40,7 +43,7 @@ if askwho == 'a':
                         print("Good Bye")
                         break
         login()
-    elif a == 'a': # this is sign up for new people
+    elif a == 'a' or a == 'new voter': # this is sign up for new people
         def adding_new_person():
             name1 = input("Enter your first name:  ")
             name2 = input("Enter your second name:  ")
@@ -50,25 +53,31 @@ if askwho == 'a':
                 exit()
             elif age > 18:
                 print("You are able to vote HURRAY!!")
-            idnumber = input("pls enter your id number: ")
-            print(name1 + " welcome")
+            idnumber = int(input("pls enter your id number: "))
+            string_id_number = str(idnumber)
+            if len(string_id_number) < 8:
+                print("an ID number must be 8 digits.That is too low")
+                exit()
+            elif len(string_id_number) >8 or len(string_id_number) <9:
+                print(name1 + " welcome")
         adding_new_person()
-    def candidets():   
-        f.execute("SELECT * FROM people ")
-    
-        a = f.fetchall()
-    
-        print(a)
+    def candidets():
+        f.execute('SELECT * FROM people')
+        print(f.fetchall())
         a = input('''choose a candidets:
         :''' )
         c.execute("INSERT INTO voters VALUES(?)",(a,))
         conn.commit()
         print("Thanks for voting for "+a)
         listing = list(a)
-        count = listing.count('malli',)
+        count = listing.count('malli,')
         print(count)
     candidets()
-elif askwho == 'b':
+    
+    
+    
+    
+elif askwho == 'b' or askwho == 'candidate':
     def addinput():
         while True:
             name  = input("enter your first name: ")
@@ -93,7 +102,11 @@ elif askwho == 'b':
         elif age > 18:
             print("thanks for signig up as a candidate")
     age()
-elif askwho == 'c':
+    
+    
+    
+    
+elif askwho == 'c' or askwho == 'staffmember':
     a = {
         "malli" : "Malli2010",
         "nesh" : "1234",
@@ -118,7 +131,14 @@ elif askwho == 'c':
             print("Welcome username ")
             print("Thank you for logging on. ")
             complete = True
-            print ("Username and Password Validated in Python")     
+            print ("Username and Password Validated in Python")
+        for a in c.execute('SELECT * FROM voters'):
+            s = [(''),('')]
+            s.append(a)
+            listing = list(s)
+
+            count = listing.count('mali,')
+            print(count)
  
     
     
