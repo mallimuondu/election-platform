@@ -68,10 +68,10 @@ if askwho == 'a' or askwho == 'voter':
         :''' )
         c.execute("INSERT INTO voters VALUES(?)",(a,))
         conn.commit()
-        print("Thanks for voting for "+a)
         listing = list(a)
         count = listing.count('malli,')
         print(count)
+        print("Thanks for voting for "+a)
     candidets()
     
     
@@ -132,13 +132,24 @@ elif askwho == 'c' or askwho == 'staffmember':
             print("Thank you for logging on. ")
             complete = True
             print ("Username and Password Validated in Python")
-        for a in c.execute('SELECT * FROM voters'):
-            s = [(''),('')]
-            s.append(a)
-            listing = list(s)
-
-            count = listing.count('mali,')
-            print(count)
+            
+        def read():
+            c.execute('SELECT * FROM voters')
+            global db
+            db = c.fetchall()
+            print(db)
+        read()
+        def count():
+            res = []
+            for a in db:
+                for item in a:
+                    res.append(item)
+            print(res)
+            print('malli has ')
+            occarence = res.count('malli',)
+            print(occarence)
+            print('votes ')
+        count()
  
     
     
