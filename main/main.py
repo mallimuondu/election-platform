@@ -50,14 +50,18 @@ def main():
                 def adding_new_person():
                     name1 = input("Enter your first name:  ")
                     name2 = input("Enter your second name:  ")
-                    age  = int(input("pls enter youre age: "))
-                    if age < 18:
-                        print("You are not an Eligible voter!!")
-                        exit()
-                    elif age > 18:
-                        print("You are able to vote HURRAY!!")
-                    else:
-                        print('pls input a number!! try again')
+                    try:
+                        age  = int(input("pls enter youre age: "))
+                        if age < 18:
+                            print('you are not an elegible voter')
+                            exit()  
+                        elif temreture1 == '' or temreture1 == ' ':
+                            print('you have inputed nothing try again')
+                            adding_new_person()
+                        elif age > 37:
+                            pass
+                    except ValueError:
+                        print ('That is not a number try again')
                         adding_new_person()
                     idnumber = int(input("pls enter your id number(8 digits): "))
                     string_id_number = str(idnumber)
