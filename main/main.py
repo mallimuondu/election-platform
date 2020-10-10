@@ -55,7 +55,7 @@ def main():
                         if age < 18:
                             print('you are not an elegible voter')
                             exit()  
-                        elif temreture1 == '' or temreture1 == ' ':
+                        elif age == '' or age == ' ':
                             print('you have inputed nothing try again')
                             adding_new_person()
                         elif age > 37:
@@ -63,15 +63,16 @@ def main():
                     except ValueError:
                         print ('That is not a number try again')
                         adding_new_person()
-                    idnumber = int(input("pls enter your id number(8 digits): "))
-                    string_id_number = str(idnumber)
-                    if len(string_id_number) < 8:
-                        print("an ID number must be 8 digits.That is too low")
-                        adding_new_person()
-                    elif len(string_id_number) >8 or len(string_id_number) <9:
-                        print(name1 + " welcome")
-                    else:
-                        print('pls input a number!! try again')
+                    try:
+                        idnumber = int(input("pls enter your id number(8 digits): "))
+                        string_id_number = str(idnumber)
+                        if len(string_id_number) < 8:
+                            print("an ID number must be 8 digits.That is too low")
+                            adding_new_person()
+                        elif len(string_id_number) >8 or len(string_id_number) <9:
+                            print(name1 + " welcome")
+                    except ValueError:
+                        print ('That is not a number try again')
                         adding_new_person()
                 adding_new_person()
 
@@ -102,15 +103,17 @@ def main():
             while True:
                 name  = input("enter your first name: ")
                 secondname  = input("enter your second name: ")
-                idnumber = int(input("pls enter your id number(8 digits): "))
-                string_id_number = str(idnumber)
-                if len(string_id_number) < 8:
-                    print("an ID number must be 8 digits.That is too low")
+                try:
+                    idnumber = int(input("pls enter your id number(8 digits): "))
+                    string_id_number = str(idnumber)
+                    if len(string_id_number) < 8:
+                        print("an ID number must be 8 digits.That is too low")
+                        addinput()
+                    elif len(string_id_number) >8 or len(string_id_number) <9:
+                        print(name1 + " welcome")
+                except ValueError:
+                    print ('That is not a number try again')
                     addinput()
-                elif len(string_id_number) >8 or len(string_id_number) <9:
-                    print(name1 + " welcome")
-                else:
-                    print('pls input a number!! try again')
                 
                 if not name.isalpha():
                     continue
