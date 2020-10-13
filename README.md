@@ -1,7 +1,67 @@
-# election-platform
-this program will cheak if you are a voter a candidate or a staff member
-if yoyu are a voter you will be able to vote for a candidate but beffore you vote it will ask you your name,age,id number,
-if you are less than 18 it will say you are not an eligible voter
-if you are greater than 18 it will print out the candidates
-if you are a candidate it will give you a sighm up then it will add to a db so i can print it out in the voters place.
-if you are a staff you will do a login then it will show you like Uhuru has 10 votes .
+<p align="center">
+  <a href="https://github.com/yourUserName/YourProjectName">
+  </a>
+  <h3 align="center">Electon platform</h3>
+
+  <p align="center">
+    this project will be used on election day
+    </p>
+</p>
+
+<br>
+
+
+## Table of contents
+- [About the Website](#about-the-website)
+- [Technical](#technical)
+- [To Do List](#to-do-list)
+- [Licence](#license)
+- [Versions](#versions)
+- [Contact Information](#contact-information)
+
+
+
+### About the website
+
+Explain what your website is about. This is ideally not technical but you are exlplaining to a non-techie.
+
+### Technical
+#### Technology Used
+This project uses:
+    - python3
+    - MarkDown
+
+#### Running the project
+
+You can:
+    a. clone the project and compile it yourself (Most up to date)
+    b.on terminal you write python3 main.py
+
+### To Do List
+
+Add the various things that you are working on. 
+
+- [ ] puting the candidates in a way some on can read like 1malli nextline 2.nesh
+- [x] puting the candidates in a db
+- [ ] cointing votes
+
+
+
+
+
+
+### License
+MIT license
+
+### Versions
+* Version 1.0  DATE 13/10/2020
+
+
+
+### Contact Information
+
+If you have found any bugs, or have any feedback or questions and or want to post a feature request please use the [election platform](https://github.com/tamzi/ReadMe-MasterTemplates/issues) to report them.
+
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](https://github.com/tamzi/ReadMe-MasterTemplates/blob/master/LICENSE)
+

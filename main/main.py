@@ -59,7 +59,7 @@ def main():
                             print("an ID number must be 8 digits.That is too low")
                             idnumbera()
                         elif len(string_id_number) >8 or len(string_id_number) <9:
-                            print(name1 + " welcome")
+                            pass
                     except ValueError:
                         print ('That is not a number try again')
                         idnumbera()
@@ -73,8 +73,6 @@ def main():
                 c.execute("INSERT INTO voters VALUES(?)",(a,))
                 conn.commit()
                 listing = list(a)
-                count = listing.count('malli,')
-                print(count)
                 print("Thanks for voting for "+a)
             candidets()
 
