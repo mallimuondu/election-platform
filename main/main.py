@@ -22,66 +22,44 @@ def main():
 
     if askwho == 'a' or askwho == 'voter':
         def voter():
-            a = input('''are you:
-            a.new voter
-            b.old 
-            :''' )
-            if a == 'b' or a == 'old':
-                def login(): # this is login for not new people
-                    for i in range(3):
-                        idnumber = input("pls enter your id number: ")
-                        with sqlite3.connect('main.db') as db:
-                            cursour = db.cursor()
-                        find_user = ('SELECT * FROM login WHERE idnumber = ?')
-                        cursour.execute(find_user,[(idnumber)])
-                        results = cursour.fetchall()
-                        if results:
-                            for bla in results:
-                                malli = str(bla)
-                            break
-                        else:
-                            print("id not recognised")
-                            again = input("Do u want to try again?(y/n): ")
-                            if again.lower() == "n":
-                                print("Good Bye")
-                                break
-                login()
-            elif a == 'a' or a == 'new voter': # this is sign up for new people
-                def adding_new_person():
-                    name1 = input("Enter your first name:  ")
-                    name2 = input("Enter your second name:  ")
-                    try:
-                        age  = int(input("pls enter youre age: "))
-                        if age < 18:
-                            print('you are not an elegible voter')
-                            exit()  
-                        elif age == '' or age == ' ':
-                            print('you have inputed nothing try again')
-                            adding_new_person()
-                        elif age > 37:
-                            pass
-                    except ValueError:
-                        print ('That is not a number try again')
+            def adding_new_person():
+                name1 = input("Enter your first name:  ")
+                if name1 == '' or name1 == ' ':
+                    print('you have inputed nothing try again')
+                    adding_new_person()
+                else:
+                    pass
+                name2 = input("Enter your second name:  ")
+                if name2 == '' or name2 == ' ':
+                    print('you have inputed nothing try again')
+                    adding_new_person()
+                else:
+                    pass
+                try:
+                    age  = int(input("pls enter youre age: "))
+                    if age < 18:
+                        print('you are not an elegible voter')
+                        exit()  
+                    elif age == '' or age == ' ':
+                        print('you have inputed nothing try again')
                         adding_new_person()
-                    try:
-                        idnumber = int(input("pls enter your id number(8 digits): "))
-                        string_id_number = str(idnumber)
-                        if len(string_id_number) < 8:
-                            print("an ID number must be 8 digits.That is too low")
-                            adding_new_person()
-                        elif len(string_id_number) >8 or len(string_id_number) <9:
-                            print(name1 + " welcome")
-                    except ValueError:
-                        print ('That is not a number try again')
+                    elif age > 37:
+                        pass
+                except ValueError:
+                    print ('That is not a number try again')
+                    adding_new_person()
+                try:
+                    idnumber = int(input("pls enter your id number(8 digits): "))
+                    string_id_number = str(idnumber)
+                    if len(string_id_number) < 8:
+                        print("an ID number must be 8 digits.That is too low")
                         adding_new_person()
-                adding_new_person()
-
-            elif a == '':
-                print("you have inputed nothing try again")
-                voter()
-            else:
-                print('you have inputed the wrong thing! try again!')
-                voter()
+                    elif len(string_id_number) >8 or len(string_id_number) <9:
+                        print(name1 + " welcome")
+                except ValueError:
+                    print ('That is not a number try again')
+                    adding_new_person()
+            adding_new_person()
             def candidets():
                 f.execute('SELECT * FROM people')
                 print(f.fetchall())
