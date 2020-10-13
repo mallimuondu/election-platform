@@ -57,7 +57,7 @@ def main():
                         string_id_number = str(idnumber)
                         if len(string_id_number) < 8:
                             print("an ID number must be 8 digits.That is too low")
-                            adding_new_person()
+                            idnumbera()
                         elif len(string_id_number) >8 or len(string_id_number) <9:
                             print(name1 + " welcome")
                     except ValueError:
