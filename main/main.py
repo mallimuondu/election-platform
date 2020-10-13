@@ -1,5 +1,4 @@
 from daterbase import *
-from login import *
 def clock():  # This part will great you dipending on time
     now = time.datetime.now()
     hour = now.hour
@@ -29,36 +28,42 @@ def main():
                     adding_new_person()
                 else:
                     pass
-                name2 = input("Enter your second name:  ")
-                if name2 == '' or name2 == ' ':
-                    print('you have inputed nothing try again')
-                    adding_new_person()
-                else:
-                    pass
-                try:
-                    age  = int(input("pls enter youre age: "))
-                    if age < 18:
-                        print('you are not an elegible voter')
-                        exit()  
-                    elif age == '' or age == ' ':
+                def second_name():
+                    name2 = input("Enter your second name:  ")
+                    if name2 == '' or name2 == ' ':
                         print('you have inputed nothing try again')
-                        adding_new_person()
-                    elif age > 37:
+                        second_name()
+                    else:
                         pass
-                except ValueError:
-                    print ('That is not a number try again')
-                    adding_new_person()
-                try:
-                    idnumber = int(input("pls enter your id number(8 digits): "))
-                    string_id_number = str(idnumber)
-                    if len(string_id_number) < 8:
-                        print("an ID number must be 8 digits.That is too low")
-                        adding_new_person()
-                    elif len(string_id_number) >8 or len(string_id_number) <9:
-                        print(name1 + " welcome")
-                except ValueError:
-                    print ('That is not a number try again')
-                    adding_new_person()
+                second_name()
+                def age_of():
+                    try:
+                        age  = int(input("pls enter youre age: "))
+                        if age < 18:
+                            print('you are not an elegible voter')
+                            exit()  
+                        elif age == '' or age == ' ':
+                            print('you have inputed nothing try again')
+                            adding_new_person()
+                        elif age > 37:
+                            pass
+                    except ValueError:
+                        print ('That is not a number try again')
+                        age_of()
+                age_of()
+                def idnumbera():
+                    try:
+                        idnumber = int(input("pls enter your id number(8 digits): "))
+                        string_id_number = str(idnumber)
+                        if len(string_id_number) < 8:
+                            print("an ID number must be 8 digits.That is too low")
+                            adding_new_person()
+                        elif len(string_id_number) >8 or len(string_id_number) <9:
+                            print(name1 + " welcome")
+                    except ValueError:
+                        print ('That is not a number try again')
+                        idnumbera()
+                idnumbera()
             adding_new_person()
             def candidets():
                 f.execute('SELECT * FROM people')
@@ -88,7 +93,7 @@ def main():
                         print("an ID number must be 8 digits.That is too low")
                         addinput()
                     elif len(string_id_number) >8 or len(string_id_number) <9:
-                        print(name1 + " welcome")
+                        print(name + " welcome")
                 except ValueError:
                     print ('That is not a number try again')
                     addinput()
@@ -96,7 +101,7 @@ def main():
                 if not name.isalpha():
                     continue
                 else:
-                    f.execute("INSERT INTO people (name)VALUES(?)",(name,))
+                    f.execute("INSERT INTO people VALUES(?)",(name,))
 
                     fonn.commit()
 

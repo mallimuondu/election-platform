@@ -12,7 +12,7 @@ f = fonn.cursor()
 
 def table():
     
-    c.execute('CREATE TABLE IF NOT EXISTS voters(people TEXT )')
+    c.execute('CREATE TABLE IF NOT EXISTS voters(people1 TEXT )')
     
 table()
 
