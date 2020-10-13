@@ -28,13 +28,17 @@ Explain what your website is about. This is ideally not technical but you are ex
 ### Technical
 #### Technology Used
 This project uses:
+
     - python3
+    
     - MarkDown
 
 #### Running the project
 
 You can:
+
     a. clone the project and compile it yourself (Most up to date)
+    
     b.on terminal you write python3 main.py
 
 ### To Do List
