@@ -26,15 +26,17 @@ def main():
                 if name1 == '' or name1 == ' ':
                     print('you have inputed nothing try again')
                     adding_new_person()
-                else:
-                    pass
+                elif name1.isdigit():
+                    print('pls input leters')
+                    adding_new_person()
                 def second_name():
                     name2 = input("Enter your second name:  ")
                     if name2 == '' or name2 == ' ':
                         print('you have inputed nothing try again')
                         second_name()
-                    else:
-                        pass
+                    elif name1.isdigit():
+                        print('pls input leters')
+                        second_name()
                 second_name()
                 def age_of():
                     try:
@@ -70,6 +72,9 @@ def main():
                 print(f.fetchall())
                 a = input('''choose a candidets:
                 :''' )
+                if a == '' or a == ' ':
+                    print('you have inputed nothing try again')
+                    candidets()
                 c.execute("INSERT INTO voters VALUES(?)",(a,))
                 conn.commit()
                 listing = list(a)
