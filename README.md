@@ -39,7 +39,9 @@ You can:
 
     a. clone the project and compile it yourself (Most up to date)
     
-    b.on terminal you write python3 main.py
+    b.enter main
+    
+    c.on terminal you write python3 main.py
 
 ### To Do List
 
