@@ -87,24 +87,45 @@ def main():
     elif askwho == 'b' or askwho == 'candidate':
         def addinput():
             while True:
-                name  = input("enter your first name: ")
-                secondname  = input("enter your second name: ")
-                try:
-                    idnumber = int(input("pls enter your id number(8 digits): "))
-                    string_id_number = str(idnumber)
-                    if len(string_id_number) < 8:
-                        print("an ID number must be 8 digits.That is too low")
-                        addinput()
-                    elif len(string_id_number) >8 or len(string_id_number) <9:
-                        print(name + " welcome")
-                except ValueError:
-                    print ('That is not a number try again')
-                    addinput()
                 
-                if not name.isalpha():
+                def adding_new_candidate():
+                    global name1
+                    name1 = input("Enter your first name:  ")
+                    if name1 == '' or name1 == ' ':
+                        print('you have inputed nothing try again')
+                        adding_new_candidate()
+                    elif name1.isdigit():
+                        print('pls input leters')
+                        adding_new_candidate()
+                adding_new_candidate()
+                
+                def second_name_candidate():
+                    name2 = input("Enter your second name:  ")
+                    if name2 == '' or name2 == ' ':
+                        print('you have inputed nothing try again')
+                        second_name_candidate()
+                    elif name2.isdigit():
+                        print('pls input leters')
+                        second_name_candidate()
+                second_name_candidate()
+                def idnumbs():
+                    try:
+                        idnumber = int(input("pls enter your id number(8 digits): "))
+                        string_id_number = str(idnumber)
+                        if len(string_id_number) < 7:
+                            print("an ID number must be 8 digits.That is too low")
+                            idnumbs()
+                        elif len(string_id_number) <=8 or len(string_id_number)> 7:
+                            pass
+                    except ValueError:
+                        print ('That is not a number try again')
+                        idnumbs()
+                idnumbs()
+                
+                if not name1.isalpha():
                     continue
                 else:
-                    f.execute("INSERT INTO people VALUES(?)",(name,))
+                    f.execute("INSERT INTO people VALUES(?)",(name1,))
 
                     fonn.commit()
 
