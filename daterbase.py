@@ -19,5 +19,4 @@ table()
 def table():
     
     f.execute('CREATE TABLE IF NOT EXISTS people(name TEXT)')
-    
 table()

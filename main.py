@@ -14,8 +14,7 @@ clock()
 def main():
     askwho = input('''are you a:
     a/voter
-    b/candidate
-    c/staffmember
+    b/staffmember
     :''')
 
 
@@ -42,7 +41,7 @@ def main():
                     try:
                         age  = int(input("pls enter youre age: "))
                         if age < 18:
-                            print('you are not an elegible voter')
+                            print('you are not an elegible voter.come back when you are 18')
                             exit()  
                         elif age == '' or age == ' ':
                             print('you have inputed nothing try again')
@@ -68,84 +67,26 @@ def main():
                 idnumbera()
             adding_new_person()
             def candidets():
-                f.execute('SELECT * FROM people')
-                print(f.fetchall())
-                a = input('''choose a candidets:
+                a = input('''this are the candidates you can  vote for:
+                malli
+                nesh
+                frank
                 :''' )
                 if a == '' or a == ' ':
                     print('you have inputed nothing try again')
                     candidets()
+                print("Thanks for voting")
                 c.execute("INSERT INTO voters VALUES(?)",(a,))
                 conn.commit()
                 listing = list(a)
-                print("Thanks for voting for "+a)
             candidets()
 
         voter()
 
 
-    elif askwho == 'b' or askwho == 'candidate':
-        def addinput():
-            while True:
-                
-                def adding_new_candidate():
-                    global name1
-                    name1 = input("Enter your first name:  ")
-                    if name1 == '' or name1 == ' ':
-                        print('you have inputed nothing try again')
-                        adding_new_candidate()
-                    elif name1.isdigit():
-                        print('pls input leters')
-                        adding_new_candidate()
-                adding_new_candidate()
-                
-                def second_name_candidate():
-                    name2 = input("Enter your second name:  ")
-                    if name2 == '' or name2 == ' ':
-                        print('you have inputed nothing try again')
-                        second_name_candidate()
-                    elif name2.isdigit():
-                        print('pls input leters')
-                        second_name_candidate()
-                second_name_candidate()
-                def idnumbs():
-                    try:
-                        idnumber = int(input("pls enter your id number(8 digits): "))
-                        string_id_number = str(idnumber)
-                        if len(string_id_number) < 7:
-                            print("an ID number must be 8 digits.That is too low")
-                            idnumbs()
-                        elif len(string_id_number) <=8 or len(string_id_number)> 7:
-                            pass
-                    except ValueError:
-                        print ('That is not a number try again')
-                        idnumbs()
-                idnumbs()
-                
-                if not name1.isalpha():
-                    continue
-                else:
-                    f.execute("INSERT INTO people VALUES(?)",(name1,))
-
-                    fonn.commit()
-
-                    break
-        addinput()
 
 
-        def age(): # cheks is you are over 18
-            age  = int(input("pls enter youre age: "))
-            if age < 18:
-                print("You are not an Eligible voter!!")
-                exit()
-            elif age > 18:
-                print("thanks for signig up as a candidate")
-        age()
-
-
-
-
-    elif askwho == 'c' or askwho == 'staffmember':
+    elif askwho == 'b' or askwho == 'staffmember':
         a = {
             "malli" : "Malli2010",
             "nesh" : "1234",
@@ -172,23 +113,17 @@ def main():
                 complete = True
                 print ("Username and Password Validated in Python")
 
-            def read():
-                c.execute('SELECT * FROM voters')
-                global db
-                db = c.fetchall()
-                print(db)
-            read()
-            def count():
-                res = []
-                for a in db:
-                    for item in a:
-                        res.append(item)
-                print(res)
-                print('malli has ')
-                occarence = res.count('malli',)
-                print(occarence)
-                print('votes ')
-            count()
+            c.execute('SELECT * FROM voters')
+            cal = c.fetchall()
+        
+            votes = []
+
+            c.execute('SELECT * FROM voters')
+            print(c.fetchall())
+            which_candidate_find = input("Which candidate are you searching for: ")
+            nal = [item for a in cal for item in a]
+            find_candidate = nal.count(which_candidate_find)
+            print(find_candidate)
 
 
 
